@@ -17,17 +17,14 @@ public class RedesController {
 
 	public String ip() {
 		RedesController ass = new RedesController();
-		int x = 1;
 		if (ass.os().contains("Windows")) {
-
 			try {
-				Process pr = Runtime.getRuntime().exec("cmd /c IPCONFIG");
+				Process pr = Runtime.getRuntime().exec("IPCONFIG");
 				InputStream is = pr.getInputStream();
 				InputStreamReader isr = new InputStreamReader(is);
 				BufferedReader br = new BufferedReader(isr);
 				String line = br.readLine();
 				while (line != null) {
-					x++;
 					if(line.contains("IPv4")) {
 					String[] ipv4 = line.split(":");
 					return ipv4[1].toString();
@@ -38,9 +35,10 @@ public class RedesController {
 				isr.close();
 				br.close();
 			} catch (IOException e) {
-
 				e.printStackTrace();
 			}
+		}else if(ass.os().contains("Linux")) {
+			
 		}
 
 		return "0";
