@@ -45,7 +45,20 @@ public class RedesController {
 				InputStreamReader isr = new InputStreamReader(is);
 				BufferedReader br = new BufferedReader(isr);
 				String line = br.readLine();
+				while (line != null) {
+					if(line.contains("IPv4")) {
+					String[] ipv4 = line.split(":");
+					return ipv4[1].toString();
+					}
+					line = br.readLine();
+				}
+				is.close();
+				isr.close();
+				br.close();
+				return "Sem IPv4";
+				
 			} catch (IOException e) {
+				
 				e.printStackTrace();
 			}
 			
