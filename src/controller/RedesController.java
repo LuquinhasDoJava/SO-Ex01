@@ -34,10 +34,20 @@ public class RedesController {
 				is.close();
 				isr.close();
 				br.close();
+				return "Sem IPv4";
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}else if(ass.os().contains("Linux")) {
+			try {
+				Process pr = Runtime.getRuntime().exec("ip addr");
+				InputStream is = pr.getInputStream();
+				InputStreamReader isr = new InputStreamReader(is);
+				BufferedReader br = new BufferedReader(isr);
+				String line = br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 		}
 
