@@ -48,7 +48,7 @@ public class RedesController {
 				while (line != null) {
 					if(line.contains("inet")) {
 					String[] ipv4 = line.split(" ");
-					System.out.println("Endereço de IPv4 é: "+ipv4[1]);
+					System.out.println("Endereço de IPv4 é: "+ipv4[5]);
 					}
 					line = br.readLine();
 				}
@@ -57,8 +57,8 @@ public class RedesController {
 				br.close();
 				
 			} catch (IOException e) {
-				
 				e.printStackTrace();
+				
 			}
 			try {
 				Process pr = Runtime.getRuntime().exec("ifconfig");
@@ -69,7 +69,7 @@ public class RedesController {
 				while (line != null) {
 					if(line.contains("inet")) {
 					String[] ipv4 = line.split(" ");
-					System.out.println("Endereço de IPv4 é: "+ipv4[1]);
+					System.out.println("Endereço de IPv4 é: "+ipv4[9]);
 					}
 					line = br.readLine();
 				}
