@@ -27,7 +27,7 @@ public class Main {
 				rc.ip();
 				break;
 			case 2:
-				System.err.println("2 foi escolhido");
+				rc.ping();
 				break;
 			case 9:
 				System.err.println("Fim do programa!");
@@ -39,6 +39,7 @@ public class Main {
 			System.out.println("Tecle 'ENTER' para continuar.");
 			sc.nextLine();
 		}while(x!=9);
+		sc.close();
 	}
 
 }
