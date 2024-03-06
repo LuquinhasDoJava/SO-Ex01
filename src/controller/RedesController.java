@@ -32,7 +32,7 @@ public class RedesController {
             } catch (IOException e){
                 e.printStackTrace();
             }
-            if(os().contains("Linux")){
+           }else if(os().contains("Linux")){
                 try {
                     Process pr = Runtime.getRuntime().exec("ip addr");
                     InputStream is = pr.getInputStream();
@@ -73,7 +73,6 @@ public class RedesController {
                 }
             }
         }
-    }
     public void ping (){
         if(os().contains("Windows")){
             try {
@@ -83,9 +82,10 @@ public class RedesController {
                 BufferedReader br = new BufferedReader(isr);
                 String line = br.readLine();
                 while (line != null){
+                	System.out.println("Carregando");
                     if (line.contains("ms, ")){
                        String [] a = line.split(" ");
-                       System.out.println(a[10]+a[11]+a[12]);
+                       System.out.println("A media é:"+a[11]+"ms");
                     }
                     line = br.readLine();
                 }
@@ -95,15 +95,17 @@ public class RedesController {
         }
         if(os().contains("Linux")){
             try {
-                Process pr = Runtime.getRuntime().exec("ping -4 -n 10 www.google.com.br");
+                Process pr = Runtime.getRuntime().exec("ping -4 -c 10 www.google.com.br");
                 InputStream is = pr.getInputStream();
                 InputStreamReader isr = new InputStreamReader(is);
                 BufferedReader br = new BufferedReader(isr);
                 String line = br.readLine();
                 while (line != null){
+                	System.out.println("Carregando...");
                     if (line.contains("rtt")){
                         String [] a = line.split(" ");
-                        System.out.println(a[10]+a[11]+a[12]);
+                        String [] b = a[3].split("/");
+                        System.out.println("A media é:"+b[3]+"ms");
                     }
                     line = br.readLine();
                 }
@@ -114,4 +116,3 @@ public class RedesController {
         }
     }
 }
-
